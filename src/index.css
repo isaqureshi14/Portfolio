@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #F5A623;
+  --color-bg-light: #2D3142;
+  --color-bg-dark: #252836;
+  --color-text-white: #FFFFFF;
+  --color-text-muted: #9CA3AF;
+  --color-text-body: #A9ADBF;
+  
+  --font-sans: 'Poppins', sans-serif;
+}
+
+/* Base custom resets */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #252836;
+  color: #A9ADBF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #252836;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D3142;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5A623;
+}
+
+/* Lenis Smooth Scroll Support */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Cursor Hide rules for hover devices */
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, [role="button"], .custom-hover {
+    cursor: none !important;
+  }
+}
+
+/* Magnetic snap classes & utility details */
+.magnetic-target {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Glow animation for open-to card */
+@keyframes soft-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 166, 35, 0.15);
+    border-color: rgba(245, 166, 35, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(245, 166, 35, 0.4);
+    border-color: rgba(245, 166, 35, 0.8);
+  }
+}
+
+.glow-pulse {
+  animation: soft-glow 3s infinite ease-in-out;
+}
