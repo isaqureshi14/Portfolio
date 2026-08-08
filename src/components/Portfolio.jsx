@@ -20,10 +20,10 @@ export default function Portfolio() {
       team: 'Team Project',
       tech: 'React.js, Django, Chart.js, Linear Regression',
       tags: ['React.js', 'Django', 'Chart.js', 'Linear Regression'],
-      description: 'Built a forecasting dashboard predicting energy demand and price trends using a linear regression model, visualized with Chart.js.',
-      highlight: 'Presented at the InnoQuest 2025–26 exhibition at DBIT.',
-      github: 'https://github.com/isaqureshi14',
-      type: 'finance',
+      description: 'Built a forecasting dashboard to predict energy demand and price trends using linear regression and Chart.js.',
+      highlight: 'Presented at InnoQuest 2025–26 at DBIT.',
+      github: null,
+      type: null,
     },
     {
       title: 'FinWise — Personal Finance App',
@@ -64,10 +64,10 @@ export default function Portfolio() {
       team: 'Team Project — Syntax Squad',
       tech: 'AI Sentiment Analysis',
       tags: ['AI', 'Sentiment Analysis', 'Syntax Squad'],
-      description: 'Contributed to an AI-driven sentiment analysis tool as part of the Syntax Squad team.',
+      description: 'Contributed to an AI-driven sentiment analysis and insight tool.',
       highlight: null,
-      github: 'https://github.com/isaqureshi14',
-      type: 'notes',
+      github: null,
+      type: null,
     },
   ];
 
@@ -90,6 +90,7 @@ export default function Portfolio() {
   };
 
   const renderMockup = (type) => {
+    if (!type) return null;
     let img = financeImg;
     if (type === 'school') img = schoolImg;
     if (type === 'notes') img = notesImg;
@@ -179,8 +180,8 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Isometric Preview */}
-              {renderMockup(proj.type)}
+              {/* Isometric Preview (Only for individual projects with images) */}
+              {proj.type && renderMockup(proj.type)}
 
               {/* Description */}
               <div className="space-y-3">
@@ -196,21 +197,23 @@ export default function Portfolio() {
                 )}
               </div>
 
-              {/* Footer Link */}
-              <div className="border-t border-text-body/10 pt-4 flex justify-between items-center mt-2">
-                <Magnetic range={30}>
-                  <a
-                    href={proj.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    View Repository
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </Magnetic>
-              </div>
+              {/* Footer Link (Only for individual projects with repository links) */}
+              {proj.github && (
+                <div className="border-t border-text-body/10 pt-4 flex justify-between items-center mt-2">
+                  <Magnetic range={30}>
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                      View Repository
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </Magnetic>
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>

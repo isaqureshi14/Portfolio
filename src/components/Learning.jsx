@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, ArrowRight, Sparkles, ChevronDown, ChevronUp, ExternalLink, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Cpu, ArrowRight, Sparkles, ExternalLink, ShieldCheck } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 import stickerGenAI from '../assets/stickers/genai_foundations.jpg';
@@ -10,8 +9,6 @@ import stickerRAG from '../assets/stickers/intro_rag.jpg';
 import stickerSustainability from '../assets/stickers/ai_sustainability.jpg';
 
 export default function Learning() {
-  const [expanded, setExpanded] = useState(false);
-
   const coursesList = [
     {
       title: 'AI for Sustainability Virtual Internship',
@@ -24,6 +21,13 @@ export default function Learning() {
       issuer: 'IBM SkillsBuild',
       date: 'Jun 2026',
       sticker: stickerGenAI,
+    },
+    {
+      title: 'Fundamentals of Digital Marketing',
+      issuer: 'Google',
+      date: 'Jul 2026',
+      link: 'https://skillshop.exceedlms.com/student/award/yLhKdn7224QN4o2ww3oEai7M',
+      sticker: null,
     },
     {
       title: 'Introduction to LLMs',
@@ -43,21 +47,23 @@ export default function Learning() {
       date: null,
       sticker: stickerRAG,
     },
-    {
-      title: 'Fundamentals of Digital Marketing',
-      issuer: 'Google',
-      date: 'Jul 2026',
-      link: 'https://skillshop.exceedlms.com/student/award/yLhKdn7224QN4o2ww3oEai7M',
-      sticker: null,
-    },
   ];
 
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] },
     },
   };
 
@@ -77,7 +83,7 @@ export default function Learning() {
     >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         
-        {/* Left Column: Subtle Currently Exploring / Learning Summary */}
+        {/* Left Column: Direct Compact Certifications & Learning */}
         <motion.div 
           className="lg:col-span-7 flex flex-col items-start"
           variants={containerVariants}
@@ -88,71 +94,53 @@ export default function Learning() {
           <span className="text-text-muted text-xs font-semibold tracking-widest uppercase mb-4">
             &mdash; Continuous Learning
           </span>
-          <h2 className="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-            Currently Exploring & Certifications.
+          <h2 className="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+            Certifications & Courses.
           </h2>
 
-          <p className="text-text-body text-sm sm:text-base leading-relaxed mb-6 font-light">
-            Recent learning includes <span className="text-white font-medium">AI for Sustainability</span>, <span className="text-white font-medium">Generative AI</span>, <span className="text-white font-medium">LLMs</span>, <span className="text-white font-medium">RAG</span>, <span className="text-white font-medium">Ethical Considerations in Generative AI</span>, and <span className="text-white font-medium">Digital Marketing</span> through IBM and Google.
+          <p className="text-text-body text-xs sm:text-sm leading-relaxed mb-8 font-light">
+            Supporting coursework and technical certifications completed through IBM and Google programs.
           </p>
 
-          {/* Toggle Button for Expandable Course List */}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-brand-primary border border-brand-primary/30 px-4 py-2.5 rounded-xl hover:bg-brand-primary/10 transition-colors custom-hover mb-6"
-          >
-            <ShieldCheck className="w-4 h-4" />
-            {expanded ? 'Hide Learning Details' : 'View Course & Certificate List'}
-            {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-
-          {/* Expandable Subtle List */}
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="w-full space-y-3 overflow-hidden border-t border-text-body/10 pt-4"
+          {/* Direct Visible Compact Grid */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {coursesList.map((course, idx) => (
+              <motion.div 
+                key={idx}
+                variants={cardVariants}
+                className="flex items-center justify-between p-3 rounded-xl bg-bg-light/40 border border-text-body/10 hover:border-brand-primary/30 transition-all duration-300"
               >
-                {coursesList.map((course, idx) => (
-                  <div 
-                    key={idx}
-                    className="flex items-center justify-between p-3 rounded-xl bg-bg-light/40 border border-text-body/10 hover:border-brand-primary/30 transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      {course.sticker ? (
-                        <img 
-                          src={course.sticker} 
-                          alt={course.title} 
-                          className="w-8 h-8 rounded object-cover flex-shrink-0 border border-text-body/20"
-                        />
-                      ) : (
-                        <div className="w-8 h-8 rounded bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center flex-shrink-0 text-brand-primary">
-                          <Cpu className="w-4 h-4" />
-                        </div>
-                      )}
-                      <div>
-                        <h4 className="text-white text-xs font-semibold">{course.title}</h4>
-                        <span className="text-[11px] text-text-muted">{course.issuer} {course.date ? `• ${course.date}` : ''}</span>
-                      </div>
+                <div className="flex items-center gap-3 min-w-0">
+                  {course.sticker ? (
+                    <img 
+                      src={course.sticker} 
+                      alt={course.title} 
+                      className="w-7 h-7 rounded object-cover flex-shrink-0 border border-text-body/20"
+                    />
+                  ) : (
+                    <div className="w-7 h-7 rounded bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                      <ShieldCheck className="w-3.5 h-3.5" />
                     </div>
-
-                    {course.link && (
-                      <a
-                        href={course.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[11px] font-mono text-brand-primary flex items-center gap-1 hover:underline custom-hover"
-                      >
-                        Credential <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
+                  )}
+                  <div className="min-w-0">
+                    <h4 className="text-white text-xs font-semibold truncate leading-tight">{course.title}</h4>
+                    <span className="text-[11px] text-text-muted font-mono">{course.issuer} {course.date ? `• ${course.date}` : ''}</span>
                   </div>
-                ))}
+                </div>
+
+                {course.link && (
+                  <a
+                    href={course.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-mono text-brand-primary flex items-center gap-1 hover:underline flex-shrink-0 ml-2 custom-hover"
+                  >
+                    View <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
               </motion.div>
-            )}
-          </AnimatePresence>
+            ))}
+          </div>
 
         </motion.div>
 
