@@ -89,6 +89,14 @@ export default function Navbar() {
                 )}
               </a>
             ))}
+            <a
+              href={`${import.meta.env.BASE_URL}Isa_Qureshi_Resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-1 px-3 border border-brand-primary/30 rounded-full text-xs font-mono font-medium tracking-wider uppercase transition-all duration-300 hover:bg-brand-primary hover:text-bg-dark text-brand-primary custom-hover"
+            >
+              Resume
+            </a>
           </nav>
 
           {/* Mobile Hamburguer Toggle */}

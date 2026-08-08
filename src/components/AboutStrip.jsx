@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Globe, Database, Sparkles, ArrowRight } from 'lucide-react';
+import { Globe, Database, Sparkles, ArrowRight, GraduationCap, Code2, Users, BookOpen } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 export default function AboutStrip() {
@@ -13,7 +13,7 @@ export default function AboutStrip() {
   };
 
   const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -30,16 +30,35 @@ export default function AboutStrip() {
     },
   };
 
+  const skillGroups = [
+    {
+      category: 'Languages',
+      skills: ['Python', 'C', 'C++', 'Java (in progress)'],
+    },
+    {
+      category: 'Web & Frameworks',
+      skills: ['React.js', 'Node.js', 'Express', 'Flask', 'HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
+    },
+    {
+      category: 'Databases & Tools',
+      skills: ['SQLite', 'SQL', 'Git/GitHub', 'Render', 'Turso', 'Chart.js'],
+    },
+    {
+      category: 'AI / Applied Interests',
+      skills: ['Anthropic API integration', 'Linear regression forecasting', 'Sentiment analysis pipelines'],
+    },
+  ];
+
   return (
     <section 
       id="services" 
       className="py-24 lg:py-32 bg-bg-dark border-t border-bg-light/20 relative"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 space-y-24">
         
         {/* Top Section: Inquiry & Quote */}
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-start"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -97,9 +116,142 @@ export default function AboutStrip() {
           </div>
         </motion.div>
 
+        {/* Education & College Involvement Grid */}
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Education Card */}
+          <motion.div
+            className="lg:col-span-7 bg-bg-light border border-text-body/10 rounded-2xl p-8 flex flex-col justify-between shadow-xl"
+            variants={cardVariants}
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-mono font-semibold tracking-widest text-text-muted uppercase">
+                  &mdash; Education
+                </span>
+              </div>
+
+              <h3 className="text-white text-2xl font-bold tracking-tight mb-1">
+                Don Bosco Institute of Technology (DBIT)
+              </h3>
+              <p className="text-brand-primary text-sm font-medium mb-4">
+                B.E. Computer Engineering &bull; Mumbai University (2025 – 2029)
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-text-body/10">
+                <div className="bg-bg-dark/40 border border-text-body/10 p-3.5 rounded-xl">
+                  <span className="text-[11px] text-text-muted block font-mono">CURRENT STATUS</span>
+                  <span className="text-white text-sm font-semibold">Second Year</span>
+                </div>
+                <div className="bg-bg-dark/40 border border-text-body/10 p-3.5 rounded-xl">
+                  <span className="text-[11px] text-text-muted block font-mono">FIRST YEAR CGPA</span>
+                  <span className="text-brand-primary text-sm font-bold">8.5</span>
+                </div>
+                <div className="bg-bg-dark/40 border border-text-body/10 p-3.5 rounded-xl">
+                  <span className="text-[11px] text-text-muted block font-mono">ACADEMICS</span>
+                  <span className="text-white text-xs font-medium">12th: 84% &bull; 10th: 85%</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Involvement & Additional Coursework Card */}
+          <motion.div
+            className="lg:col-span-5 bg-bg-light border border-text-body/10 rounded-2xl p-8 flex flex-col justify-between shadow-xl"
+            variants={cardVariants}
+          >
+            <div className="space-y-6">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <Users className="w-4 h-4 text-brand-primary" />
+                  <span className="text-xs font-mono font-semibold tracking-widest text-text-muted uppercase">
+                    Involvement
+                  </span>
+                </div>
+                <h4 className="text-white text-base font-bold">
+                  Contributor, College Newsletter/Magazine Team &mdash; DBIT
+                </h4>
+                <p className="text-text-muted text-xs font-mono mt-1">
+                  Academic Year 2025–26
+                </p>
+              </div>
+
+              <div className="border-t border-text-body/10 pt-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <BookOpen className="w-4 h-4 text-brand-primary" />
+                  <span className="text-xs font-mono font-semibold tracking-widest text-text-muted uppercase">
+                    Coursework & Interests
+                  </span>
+                </div>
+                <ul className="text-text-body text-xs leading-relaxed space-y-2 font-light">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-primary font-bold">&bull;</span>
+                    Strong academic foundation in Mathematics; coursework spanning Environmental Studies & core CS subjects.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-primary font-bold">&bull;</span>
+                    Experimenting with new technologies through self-directed side projects & exploring UI/UX design principles.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Technical Skills Section */}
+        <motion.div 
+          className="space-y-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="flex items-center gap-3">
+            <Code2 className="w-5 h-5 text-brand-primary" />
+            <h3 className="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Technical Skills.
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {skillGroups.map((group, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-bg-light border border-text-body/10 rounded-2xl p-6 flex flex-col justify-between shadow-lg hover:border-brand-primary/30 transition-all duration-300"
+                variants={cardVariants}
+                whileHover={{ y: -4 }}
+              >
+                <div>
+                  <h4 className="text-brand-primary text-xs font-mono font-bold uppercase tracking-wider mb-4 border-b border-text-body/10 pb-2">
+                    {group.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="text-xs text-white font-medium bg-bg-dark/60 border border-text-body/15 px-3 py-1 rounded-lg"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Bottom Section: Service / Focus Cards */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -123,7 +275,7 @@ export default function AboutStrip() {
             <div>
               <h3 className="text-2xl font-bold mb-2 tracking-tight">Web Development</h3>
               <p className="text-bg-dark/80 text-sm leading-relaxed">
-                HTML, CSS, JS, building full responsive projects end-to-end with modern tooling.
+                React.js, HTML5, CSS3, JS, building full responsive projects end-to-end with modern tooling.
               </p>
             </div>
           </motion.div>
@@ -141,12 +293,12 @@ export default function AboutStrip() {
             <div>
               <h3 className="text-white text-2xl font-bold mb-2 tracking-tight">Full-Stack Dev</h3>
               <p className="text-text-body text-sm leading-relaxed">
-                Backend engineering using Flask, Node.js/Express, SQLite databases, and secure REST APIs.
+                Backend engineering using Node.js/Express, Flask, SQLite databases (Turso), and REST APIs.
               </p>
             </div>
           </motion.div>
 
-          {/* Card 3: Exploring: Marketing & AI Tools */}
+          {/* Card 3: AI & Applied Interests */}
           <motion.div
             className="bg-bg-light border border-text-body/10 text-white rounded-2xl p-8 flex flex-col justify-between h-72 shadow-lg cursor-pointer hover:border-brand-primary/30 select-none custom-hover"
             variants={cardVariants}
@@ -157,9 +309,9 @@ export default function AboutStrip() {
               <Sparkles className="w-6 h-6 text-brand-primary" />
             </div>
             <div>
-              <h3 className="text-white text-2xl font-bold mb-2 tracking-tight">AI & Marketing</h3>
+              <h3 className="text-white text-2xl font-bold mb-2 tracking-tight">AI & Analytics</h3>
               <p className="text-text-body text-sm leading-relaxed">
-                Exploring digital marketing fundamentals, Generative AI basics, and data analytics in Excel.
+                Anthropic API integration, linear regression forecasting models, Chart.js visualizations, and sentiment analysis.
               </p>
             </div>
           </motion.div>
@@ -170,3 +322,4 @@ export default function AboutStrip() {
     </section>
   );
 }
+

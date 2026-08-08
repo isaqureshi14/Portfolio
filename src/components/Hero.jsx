@@ -147,14 +147,14 @@ export default function Hero() {
 
             <Magnetic range={30}>
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=isatanvirqureshi@gmail.com"
+                href={`${import.meta.env.BASE_URL}Isa_Qureshi_Resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-12 h-12 flex items-center justify-center border border-text-body/20 rounded-full overflow-hidden group custom-hover bg-bg-dark/20"
-                aria-label="Email Me"
+                className="relative px-4 h-12 flex items-center gap-2 border border-brand-primary/40 rounded-full overflow-hidden group custom-hover bg-brand-primary/10 text-brand-primary font-semibold text-xs tracking-wider uppercase"
+                aria-label="View Resume"
               >
                 <span className="absolute inset-0 bg-brand-primary rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-                <MailIcon className="w-5 h-5 text-white z-10 group-hover:text-bg-dark transition-colors duration-300" />
+                <span className="z-10 group-hover:text-bg-dark transition-colors duration-300">View Resume</span>
               </a>
             </Magnetic>
           </motion.div>
@@ -178,24 +178,36 @@ export default function Hero() {
             className="text-white text-xl sm:text-2xl font-bold leading-snug mb-6"
             variants={itemVariants}
           >
-            Computer Engineering student, based in Mumbai &mdash; currently exploring web development, full-stack, and where design meets code.
+            Second-year Computer Engineering student at Don Bosco Institute of Technology, building full-stack web applications and experimenting with AI-powered solutions.
           </motion.h2>
 
           <motion.p 
             className="text-text-body text-sm sm:text-base leading-relaxed mb-8 font-light"
             variants={itemVariants}
           >
-            I'm a 2nd-year Computer Engineering student who likes building things that actually work &mdash; from finance trackers to school management systems &mdash; with a strong focus on clean, polished design, not just functionality.
+            Focused on building clean, practical web tools &mdash; from personal finance apps with AI insights to school management redesigns &mdash; combining modern full-stack frameworks with thoughtful UI design.
           </motion.p>
 
-          <motion.button
-            onClick={() => setStoryOpen(true)}
-            className="flex items-center gap-2 group text-brand-primary font-semibold text-sm tracking-wide custom-hover"
-            variants={itemVariants}
-          >
-            My story 
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
-          </motion.button>
+          <div className="flex items-center gap-6">
+            <motion.button
+              onClick={() => setStoryOpen(true)}
+              className="flex items-center gap-2 group text-brand-primary font-semibold text-sm tracking-wide custom-hover"
+              variants={itemVariants}
+            >
+              My story 
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
+            </motion.button>
+
+            <motion.a
+              href={`${import.meta.env.BASE_URL}Isa_Qureshi_Resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-text-muted hover:text-white font-mono text-xs uppercase tracking-wider transition-colors custom-hover"
+              variants={itemVariants}
+            >
+              Resume PDF &rarr;
+            </motion.a>
+          </div>
         </motion.div>
 
         {/* Overlapping portrait image with depth offset */}
@@ -218,14 +230,13 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            {/* Duotone Overlay filter */}
+            {/* Natural portrait without duotone overlay */}
             <div className="relative w-full h-full group">
-              <div className="absolute inset-0 bg-brand-primary/10 mix-blend-color z-10 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-transparent to-transparent opacity-60 z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/80 via-transparent to-transparent opacity-40 z-10 pointer-events-none" />
               <img
                 src={profileImg}
                 alt="Isa Qureshi Profile"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -270,24 +281,26 @@ export default function Hero() {
                 <div className="space-y-6">
                   <h3 className="text-white text-3xl font-bold tracking-tight">The Story Behind the Code.</h3>
                   <p className="text-text-body text-base leading-relaxed font-light">
-                    I'm currently in my second year of Computer Engineering at DBIT, still figuring out exactly where I want to specialize &mdash; web development, full-stack, or something in between. What I do know is I love building full projects end-to-end: a finance tracker with AI insights, a school management redesign, an AI-powered notes app.
+                    I am currently a second-year Computer Engineering student at Don Bosco Institute of Technology (DBIT), Mumbai (2025–2029). Having achieved an 8.5 CGPA in my first year, I enjoy applying core CS fundamentals to build real-world web applications.
                   </p>
                   <p className="text-text-body text-base leading-relaxed font-light">
-                    I care as much about how something looks as how it works, and I'm always picking up new tools along the way &mdash; from digital marketing fundamentals to the basics of generative AI. 
+                    My projects range from full-stack platforms like FinWise (personal finance tracker with Anthropic API integration) and Sunrise Public School management redesign, to forecasting tools like the Energy Demand & Price Predictor presented at DBIT's InnoQuest 2025–26 exhibition.
                   </p>
                   <p className="text-text-body text-base leading-relaxed font-light">
-                    For me, development is not just about writing clean logic on the backend; it's about engineering an experience that is polished, interactive, and helpful. As I continue my engineering studies, I look forward to working on more real-world applications and collaborating with developers who share a passion for design and technology.
+                    Alongside my coursework in mathematics, environmental studies, and core CS, I actively experiment with AI integrations, continuous learning through IBM and Google programs, and contributing to DBIT's newsletter team.
                   </p>
                 </div>
               </div>
 
               <div className="mt-12 pt-6 border-t border-text-body/10 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <span className="text-xs text-text-muted font-mono">DBIT Mumbai, Computer Engineering</span>
+                <span className="text-xs text-text-muted font-mono">DBIT Mumbai &bull; Computer Engineering (2025–2029)</span>
                 <a
-                  href="mailto:isatanvirqureshi@gmail.com"
+                  href={`${import.meta.env.BASE_URL}Isa_Qureshi_Resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-brand-primary hover:bg-brand-primary/90 text-bg-dark font-bold text-sm tracking-wide rounded-xl transition-all duration-300 custom-hover"
                 >
-                  Get In Touch
+                  View Resume PDF
                 </a>
               </div>
             </motion.div>

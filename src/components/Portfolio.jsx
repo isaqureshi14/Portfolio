@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Users, Calendar, Award } from 'lucide-react';
 import Magnetic from './Magnetic';
 import financeImg from '../assets/finance_preview.png';
 import schoolImg from '../assets/school_preview.png';
@@ -15,24 +15,58 @@ const GithubIcon = (props) => (
 export default function Portfolio() {
   const projects = [
     {
-      title: 'Finance Manager with AI Insight',
-      tags: ['Full-Stack', 'AI'],
-      description: 'A personal finance tracker with AI-generated spending insights. Built with Flask, SQLite, and the Anthropic API on the backend, HTML/CSS/JS on the front end.',
+      title: 'Energy Demand & Price Predictor',
+      year: '2025',
+      team: 'Team Project',
+      tech: 'React.js, Django, Chart.js, Linear Regression',
+      tags: ['React.js', 'Django', 'Chart.js', 'Linear Regression'],
+      description: 'Built a forecasting dashboard predicting energy demand and price trends using a linear regression model, visualized with Chart.js.',
+      highlight: 'Presented at the InnoQuest 2025–26 exhibition at DBIT.',
+      github: 'https://github.com/isaqureshi14',
+      type: 'finance',
+    },
+    {
+      title: 'FinWise — Personal Finance App',
+      year: '2026 – Present',
+      team: null,
+      tech: 'Flask, SQLite, Anthropic API, HTML/CSS/JS',
+      tags: ['Flask', 'SQLite', 'Anthropic API', 'HTML/CSS/JS'],
+      description: 'Developing a full-stack personal finance tracker with an AI-assisted insights layer using the Anthropic API.',
+      highlight: 'Handled end-to-end deployment, including backend API key configuration and environment setup.',
       github: 'https://github.com/isaqureshi14/Finance-Manager-With-AI-Insight',
       type: 'finance',
     },
     {
-      title: 'Student Management System',
-      tags: ['Full-Stack', 'Redesign'],
-      description: 'A multi-page school management system rebuilt with a dark glassmorphism UI, Tailwind CSS, and rose/red accents — while preserving all existing app logic.',
+      title: 'Sunrise Public School — Management System Redesign',
+      year: '2026',
+      team: null,
+      tech: 'Node.js, Express, SQLite, Tailwind CSS',
+      tags: ['Node.js', 'Express', 'SQLite', 'Tailwind CSS'],
+      description: 'Redesigned a multi-page school management system with a cohesive dark UI using glassmorphism and a custom accent theme while preserving the existing JavaScript logic.',
+      highlight: 'Deployed the application to Render using Turso for cloud-hosted SQLite.',
       github: 'https://github.com/isaqureshi14/Student-management-system',
       type: 'school',
     },
     {
-      title: 'Strata — Agentic Notes',
-      tags: ['TypeScript', 'AI', 'Local-First'],
-      description: 'A premium, minimalist local-first workspace combining notes, progress trackers, and finance sheets with an integrated AI Copilot.',
+      title: 'AI-Enhanced Notes App',
+      year: '2026',
+      team: null,
+      tech: 'Full-stack, AI integration',
+      tags: ['Full-Stack', 'AI Integration'],
+      description: 'Built a notes application with AI-assisted features for organizing and summarizing content.',
+      highlight: null,
       github: 'https://github.com/isaqureshi14/strata-agentic-notes',
+      type: 'notes',
+    },
+    {
+      title: 'TREND-PULSE: AI Sentiment & Insight Bot',
+      year: '2025',
+      team: 'Team Project — Syntax Squad',
+      tech: 'AI Sentiment Analysis',
+      tags: ['AI', 'Sentiment Analysis', 'Syntax Squad'],
+      description: 'Contributed to an AI-driven sentiment analysis tool as part of the Syntax Squad team.',
+      highlight: null,
+      github: 'https://github.com/isaqureshi14',
       type: 'notes',
     },
   ];
@@ -41,13 +75,13 @@ export default function Portfolio() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { y: 60, opacity: 0 },
+    hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -55,18 +89,16 @@ export default function Portfolio() {
     },
   };
 
-  // Render the custom isometric CSS mockups based on project type
   const renderMockup = (type) => {
-    let img = null;
-    if (type === 'finance') img = financeImg;
+    let img = financeImg;
     if (type === 'school') img = schoolImg;
     if (type === 'notes') img = notesImg;
 
     return (
-      <div className="w-full h-48 bg-bg-dark/40 rounded-xl relative overflow-hidden flex items-center justify-center border border-text-body/5 p-4 select-none">
+      <div className="w-full h-44 bg-bg-dark/60 rounded-xl relative overflow-hidden flex items-center justify-center border border-text-body/10 p-3 select-none">
         <div 
-          className="w-full h-full rounded-lg border border-text-body/15 overflow-hidden shadow-2xl transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.03]"
-          style={{ transform: 'perspective(800px) rotateX(15deg) rotateY(-15deg) rotateZ(5deg)', transformStyle: 'preserve-3d' }}
+          className="w-full h-full rounded-lg border border-text-body/15 overflow-hidden shadow-xl transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.02]"
+          style={{ transform: 'perspective(800px) rotateX(12deg) rotateY(-10deg) rotateZ(3deg)', transformStyle: 'preserve-3d' }}
         >
           <img 
             src={img} 
@@ -95,35 +127,50 @@ export default function Portfolio() {
             Projects I've Built.
           </h2>
           <p className="text-text-body text-sm sm:text-base leading-relaxed font-light">
-            A mix of solo and collaborative builds &mdash; real tools solving real (small) problems.
+            A showcase of my recent full-stack applications, AI integrations, and team project builds at DBIT.
           </p>
         </div>
 
-        {/* Masonry-Style Asymmetric 2-Column Grid */}
+        {/* Projects Grid */}
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Column 1 (Left Side of Grid) */}
-          <div className="flex flex-col gap-12">
-            {/* Project 1 */}
+          {projects.map((proj, idx) => (
             <motion.div
-              className="bg-bg-dark border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col gap-6 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
+              key={idx}
+              className="bg-bg-dark border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between gap-6 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
               variants={cardVariants}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -6 }}
             >
-              {/* Top Row: Title & Tags */}
-              <div className="flex justify-between items-start gap-4">
+              {/* Header: Title & Badges */}
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-3.5 h-3.5 text-brand-primary" />
+                    <span className="text-xs font-mono text-text-muted">{proj.year}</span>
+                  </div>
+
+                  {proj.team && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold tracking-wide uppercase px-2.5 py-0.5 bg-brand-primary/10 text-brand-primary border border-brand-primary/20 rounded-full">
+                      <Users className="w-3 h-3" />
+                      {proj.team}
+                    </span>
+                  )}
+                </div>
+
                 <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors">
-                  {projects[0].title}
+                  {proj.title}
                 </h3>
-                <div className="flex flex-wrap gap-1.5 justify-end">
-                  {projects[0].tags.map((tag, idx) => (
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {proj.tags.map((tag, tIdx) => (
                     <span 
-                      key={idx} 
+                      key={tIdx} 
                       className="text-[10px] font-mono font-semibold tracking-wide uppercase px-2 py-0.5 bg-bg-light text-text-body border border-text-body/10 rounded-full"
                     >
                       {tag}
@@ -132,129 +179,40 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Tilted Isometric Mockup Area */}
-              {renderMockup(projects[0].type)}
+              {/* Isometric Preview */}
+              {renderMockup(proj.type)}
 
               {/* Description */}
-              <p className="text-text-body text-xs sm:text-sm leading-relaxed font-light">
-                {projects[0].description}
-              </p>
+              <div className="space-y-3">
+                <p className="text-text-body text-xs sm:text-sm leading-relaxed font-light">
+                  "{proj.description}"
+                </p>
 
-              {/* Footer View link */}
-              <div className="border-t border-text-body/10 pt-4 flex justify-between items-center">
+                {proj.highlight && (
+                  <div className="flex items-start gap-2 text-xs text-brand-primary bg-brand-primary/5 p-3 rounded-lg border border-brand-primary/10 font-light">
+                    <Award className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span>{proj.highlight}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Footer Link */}
+              <div className="border-t border-text-body/10 pt-4 flex justify-between items-center mt-2">
                 <Magnetic range={30}>
                   <a
-                    href={projects[0].github}
+                    href={proj.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
                   >
                     <GithubIcon className="w-4 h-4" />
-                    View on GitHub
+                    View Repository
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </Magnetic>
               </div>
             </motion.div>
-
-            {/* Project 3 */}
-            <motion.div
-              className="bg-bg-dark border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col gap-6 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-            >
-              <div className="flex justify-between items-start gap-4">
-                <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors">
-                  {projects[2].title}
-                </h3>
-                <div className="flex flex-wrap gap-1.5 justify-end">
-                  {projects[2].tags.map((tag, idx) => (
-                    <span 
-                      key={idx} 
-                      className="text-[10px] font-mono font-semibold tracking-wide uppercase px-2 py-0.5 bg-bg-light text-text-body border border-text-body/10 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {renderMockup(projects[2].type)}
-
-              <p className="text-text-body text-xs sm:text-sm leading-relaxed font-light">
-                {projects[2].description}
-              </p>
-
-              <div className="border-t border-text-body/10 pt-4 flex justify-between items-center">
-                <Magnetic range={30}>
-                  <a
-                    href={projects[2].github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    View on GitHub
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </Magnetic>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Column 2 (Right Side of Grid - Offset downward on large viewports for masonry) */}
-          <div className="flex flex-col gap-12 lg:pt-16">
-            {/* Project 2 */}
-            <motion.div
-              className="bg-bg-dark border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col gap-6 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-            >
-              <div className="flex justify-between items-start gap-4">
-                <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors">
-                  {projects[1].title}
-                </h3>
-                <div className="flex flex-wrap gap-1.5 justify-end">
-                  {projects[1].tags.map((tag, idx) => (
-                    <span 
-                      key={idx} 
-                      className="text-[10px] font-mono font-semibold tracking-wide uppercase px-2 py-0.5 bg-bg-light text-text-body border border-text-body/10 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {renderMockup(projects[1].type)}
-
-              <p className="text-text-body text-xs sm:text-sm leading-relaxed font-light">
-                {projects[1].description}
-              </p>
-
-              <div className="border-t border-text-body/10 pt-4 flex justify-between items-center">
-                <Magnetic range={30}>
-                  <a
-                    href={projects[1].github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    View on GitHub
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </Magnetic>
-              </div>
-            </motion.div>
-
-            {/* Placeholder info box to balance masonry layout spacing */}
-            <div className="hidden lg:flex flex-col p-8 border border-dashed border-text-body/20 rounded-2xl justify-center items-center h-48 text-center text-xs text-text-muted font-mono leading-relaxed select-none">
-              <span>EXPLORING MORE BUILDS...</span>
-              <span className="mt-1">Follow along on my GitHub for active repositories and experimental projects.</span>
-            </div>
-          </div>
-
+          ))}
         </motion.div>
 
       </div>
