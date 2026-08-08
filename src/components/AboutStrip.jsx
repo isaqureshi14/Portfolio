@@ -162,48 +162,6 @@ export default function AboutStrip() {
               </div>
             </div>
           </motion.div>
-
-          {/* Involvement & Additional Coursework Card */}
-          <motion.div
-            className="lg:col-span-5 bg-bg-light border border-text-body/10 rounded-2xl p-8 flex flex-col justify-between shadow-xl"
-            variants={cardVariants}
-          >
-            <div className="space-y-6">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <Users className="w-4 h-4 text-brand-primary" />
-                  <span className="text-xs font-mono font-semibold tracking-widest text-text-muted uppercase">
-                    Involvement
-                  </span>
-                </div>
-                <h4 className="text-white text-base font-bold">
-                  Contributor, College Newsletter/Magazine Team &mdash; DBIT
-                </h4>
-                <p className="text-text-muted text-xs font-mono mt-1">
-                  Academic Year 2025–26
-                </p>
-              </div>
-
-              <div className="border-t border-text-body/10 pt-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <BookOpen className="w-4 h-4 text-brand-primary" />
-                  <span className="text-xs font-mono font-semibold tracking-widest text-text-muted uppercase">
-                    Coursework & Interests
-                  </span>
-                </div>
-                <ul className="text-text-body text-xs leading-relaxed space-y-2 font-light">
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-primary font-bold">&bull;</span>
-                    Strong academic foundation in Mathematics; coursework spanning Environmental Studies & core CS subjects.
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-primary font-bold">&bull;</span>
-                    Experimenting with new technologies through self-directed side projects & exploring UI/UX design principles.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Technical Skills Section */}

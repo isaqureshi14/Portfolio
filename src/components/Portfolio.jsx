@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Users, Calendar, Award } from 'lucide-react';
+import { ExternalLink, Users, Calendar, Bookmark, Compass, BookOpen } from 'lucide-react';
 import Magnetic from './Magnetic';
 import financeImg from '../assets/finance_preview.png';
-import schoolImg from '../assets/school_preview.png';
-import notesImg from '../assets/notes_preview.png';
 
 const GithubIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -13,61 +11,59 @@ const GithubIcon = (props) => (
 );
 
 export default function Portfolio() {
-  const projects = [
+  const leftProjects = [
     {
       title: 'Energy Demand & Price Predictor',
       year: '2025',
-      team: 'Team Project',
-      tech: 'React.js, Django, Chart.js, Linear Regression',
-      tags: ['React.js', 'Django', 'Chart.js', 'Linear Regression'],
-      description: 'Built a forecasting dashboard to predict energy demand and price trends using linear regression and Chart.js.',
+      team: 'TEAM PROJECT',
+      tags: ['REACT.JS', 'DJANGO', 'CHART.JS', 'LINEAR REGRESSION'],
+      description: "'Built a forecasting dashboard to predict energy demand and price trends using linear regression and Chart.js.",
       highlight: 'Presented at InnoQuest 2025–26 at DBIT.',
       github: null,
-      type: null,
-    },
-    {
-      title: 'FinWise — Personal Finance App',
-      year: '2026 – Present',
-      team: null,
-      tech: 'Flask, SQLite, Anthropic API, HTML/CSS/JS',
-      tags: ['Flask', 'SQLite', 'Anthropic API', 'HTML/CSS/JS'],
-      description: 'Developing a full-stack personal finance tracker with an AI-assisted insights layer using the Anthropic API.',
-      highlight: 'Handled end-to-end deployment, including backend API key configuration and environment setup.',
-      github: 'https://github.com/isaqureshi14/Finance-Manager-With-AI-Insight',
-      type: 'finance',
+      image: null,
     },
     {
       title: 'Sunrise Public School — Management System Redesign',
       year: '2026',
       team: null,
-      tech: 'Node.js, Express, SQLite, Tailwind CSS',
-      tags: ['Node.js', 'Express', 'SQLite', 'Tailwind CSS'],
+      tags: ['NODE.JS', 'EXPRESS', 'SQLITE', 'TAILWIND CSS'],
       description: 'Redesigned a multi-page school management system with a cohesive dark UI using glassmorphism and a custom accent theme while preserving the existing JavaScript logic.',
       highlight: 'Deployed the application to Render using Turso for cloud-hosted SQLite.',
       github: 'https://github.com/isaqureshi14/Student-management-system',
-      type: 'school',
+      image: null,
+    },
+    {
+      title: 'TREND-PULSE: AI Sentiment & Insight Bot',
+      year: '2025',
+      team: 'TEAM PROJECT — SYNTAX SQUAD',
+      tags: [],
+      description: 'Contributed to an AI-driven sentiment analysis and insight tool.',
+      highlight: null,
+      github: null,
+      image: null,
+    },
+  ];
+
+  const rightProjects = [
+    {
+      title: 'FinWise — Personal Finance App',
+      year: '2026 – Present',
+      team: null,
+      tags: ['FLASK', 'SQLITE', 'ANTHROPIC API', 'HTML/CSS/JS'],
+      description: 'Developing a full-stack personal finance tracker with an AI-assisted insights layer using the Anthropic API.',
+      highlight: 'Handled end-to-end deployment, including backend API key configuration and environment setup.',
+      github: 'https://github.com/isaqureshi14/Finance-Manager-With-AI-Insight',
+      image: financeImg,
     },
     {
       title: 'AI-Enhanced Notes App',
       year: '2026',
       team: null,
-      tech: 'Full-stack, AI integration',
-      tags: ['Full-Stack', 'AI Integration'],
+      tags: ['FULL-STACK', 'AI INTEGRATION'],
       description: 'Built a notes application with AI-assisted features for organizing and summarizing content.',
       highlight: null,
       github: 'https://github.com/isaqureshi14/strata-agentic-notes',
-      type: 'notes',
-    },
-    {
-      title: 'TREND-PULSE: AI Sentiment & Insight Bot',
-      year: '2025',
-      team: 'Team Project — Syntax Squad',
-      tech: 'AI Sentiment Analysis',
-      tags: ['AI', 'Sentiment Analysis', 'Syntax Squad'],
-      description: 'Contributed to an AI-driven sentiment analysis and insight tool.',
-      highlight: null,
-      github: null,
-      type: null,
+      image: null,
     },
   ];
 
@@ -81,7 +77,7 @@ export default function Portfolio() {
   };
 
   const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -89,136 +85,165 @@ export default function Portfolio() {
     },
   };
 
-  const renderMockup = (type) => {
-    if (!type) return null;
-    let img = financeImg;
-    if (type === 'school') img = schoolImg;
-    if (type === 'notes') img = notesImg;
+  const renderCard = (proj, idx) => (
+    <motion.div
+      key={idx}
+      className="bg-[#131722] border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between gap-5 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
+      variants={cardVariants}
+      whileHover={{ y: -4 }}
+    >
+      <div className="space-y-4">
+        {/* Top bar: Year & Team tag */}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2 text-xs font-mono text-brand-primary/90">
+            <Calendar className="w-3.5 h-3.5 text-brand-primary" />
+            <span>{proj.year}</span>
+          </div>
 
-    return (
-      <div className="w-full h-44 bg-bg-dark/60 rounded-xl relative overflow-hidden flex items-center justify-center border border-text-body/10 p-3 select-none">
-        <div 
-          className="w-full h-full rounded-lg border border-text-body/15 overflow-hidden shadow-xl transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.02]"
-          style={{ transform: 'perspective(800px) rotateX(12deg) rotateY(-10deg) rotateZ(3deg)', transformStyle: 'preserve-3d' }}
-        >
-          <img 
-            src={img} 
-            alt="Project Preview" 
-            className="w-full h-full object-cover transition-transform duration-500" 
-            loading="lazy"
-          />
+          {proj.team && (
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-semibold tracking-wide uppercase px-3 py-1 bg-brand-primary/10 text-brand-primary border border-brand-primary/25 rounded-full">
+              <Users className="w-3 h-3" />
+              {proj.team}
+            </span>
+          )}
         </div>
+
+        {/* Title */}
+        <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors leading-snug">
+          {proj.title}
+        </h3>
+
+        {/* Tech tags */}
+        {proj.tags && proj.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {proj.tags.map((tag, tIdx) => (
+              <span
+                key={tIdx}
+                className="text-[10px] font-mono font-semibold tracking-wider uppercase px-2.5 py-1 bg-[#1a202c]/70 text-text-body border border-text-body/15 rounded-md"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Image preview (FinWise) */}
+        {proj.image && (
+          <div className="w-full bg-[#0a0d14] p-2.5 rounded-xl border border-text-body/10 my-3 overflow-hidden shadow-inner">
+            <img
+              src={proj.image}
+              alt={`${proj.title} Preview`}
+              className="w-full h-auto rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </div>
+        )}
+
+        {/* Description */}
+        <p className="text-text-body text-sm leading-relaxed font-light">
+          {proj.description}
+        </p>
+
+        {/* Highlight box */}
+        {proj.highlight && (
+          <div className="flex items-start gap-2.5 text-xs text-brand-primary bg-brand-primary/5 p-3.5 rounded-xl border border-brand-primary/20 font-light leading-relaxed">
+            <Bookmark className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-primary" />
+            <span>{proj.highlight}</span>
+          </div>
+        )}
       </div>
-    );
-  };
+
+      {/* Footer link */}
+      {proj.github && (
+        <div className="border-t border-text-body/10 pt-4 flex items-center justify-between mt-2">
+          <Magnetic range={30}>
+            <a
+              href={proj.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover group/link"
+            >
+              <GithubIcon className="w-4 h-4 text-text-muted group-hover/link:text-white transition-colors" />
+              <span>VIEW DETAILS</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </Magnetic>
+        </div>
+      )}
+    </motion.div>
+  );
 
   return (
     <section 
       id="works" 
-      className="py-24 lg:py-32 bg-bg-light border-t border-bg-light/20"
+      className="py-24 lg:py-32 bg-bg-dark border-t border-bg-light/20"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 space-y-16">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 flex flex-col items-start">
-          <span className="text-text-muted text-xs font-semibold tracking-widest uppercase mb-4">
-            &mdash; Portfolio
-          </span>
-          <h2 className="text-white text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-            Projects I've Built.
+        <div className="max-w-3xl flex flex-col items-start">
+          <div className="flex items-center gap-2 text-brand-primary text-xs font-mono font-semibold tracking-widest uppercase mb-3">
+            <Compass className="w-4 h-4 text-brand-primary" />
+            <span>PROJECTS</span>
+          </div>
+          <h2 className="text-white text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Things I've Built
           </h2>
           <p className="text-text-body text-sm sm:text-base leading-relaxed font-light">
             A showcase of my recent full-stack applications, AI integrations, and team project builds at DBIT.
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects 2-Column Layout */}
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {projects.map((proj, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-bg-dark border border-text-body/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between gap-6 shadow-xl transition-all duration-300 group hover:border-brand-primary/30 relative"
-              variants={cardVariants}
-              whileHover={{ y: -6 }}
-            >
-              {/* Header: Title & Badges */}
-              <div className="space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5 text-brand-primary" />
-                    <span className="text-xs font-mono text-text-muted">{proj.year}</span>
-                  </div>
+          {/* Left Column */}
+          <div className="flex flex-col gap-6">
+            {leftProjects.map((proj, idx) => renderCard(proj, idx))}
+          </div>
 
-                  {proj.team && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold tracking-wide uppercase px-2.5 py-0.5 bg-brand-primary/10 text-brand-primary border border-brand-primary/20 rounded-full">
-                      <Users className="w-3 h-3" />
-                      {proj.team}
-                    </span>
-                  )}
-                </div>
+          {/* Right Column */}
+          <div className="flex flex-col gap-6">
+            {rightProjects.map((proj, idx) => renderCard(proj, idx))}
+          </div>
+        </motion.div>
 
-                <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors">
-                  {proj.title}
-                </h3>
+        {/* Involvement Section */}
+        <motion.div 
+          className="pt-10 border-t border-text-body/10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex items-center gap-2 text-brand-primary text-xs font-mono font-semibold tracking-widest uppercase mb-4">
+            <Users className="w-4 h-4 text-brand-primary" />
+            <span>INVOLVEMENT</span>
+          </div>
 
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {proj.tags.map((tag, tIdx) => (
-                    <span 
-                      key={tIdx} 
-                      className="text-[10px] font-mono font-semibold tracking-wide uppercase px-2 py-0.5 bg-bg-light text-text-body border border-text-body/10 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-[#131722] border border-text-body/10 rounded-2xl p-6 md:p-8 shadow-xl">
+            <div>
+              <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-2">
+                College Newsletter / Magazine Team
+              </h3>
+              <p className="text-text-muted text-xs sm:text-sm font-mono">
+                DBIT &nbsp;&bull;&nbsp; Academic Year 2025–26 &nbsp;&bull;&nbsp; Contributor
+              </p>
+            </div>
 
-              {/* Isometric Preview (Only for individual projects with images) */}
-              {proj.type && renderMockup(proj.type)}
-
-              {/* Description */}
-              <div className="space-y-3">
-                <p className="text-text-body text-xs sm:text-sm leading-relaxed font-light">
-                  "{proj.description}"
-                </p>
-
-                {proj.highlight && (
-                  <div className="flex items-start gap-2 text-xs text-brand-primary bg-brand-primary/5 p-3 rounded-lg border border-brand-primary/10 font-light">
-                    <Award className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                    <span>{proj.highlight}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Footer Link (Only for individual projects with repository links) */}
-              {proj.github && (
-                <div className="border-t border-text-body/10 pt-4 flex justify-between items-center mt-2">
-                  <Magnetic range={30}>
-                    <a
-                      href={proj.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs text-text-muted hover:text-white font-mono uppercase tracking-widest transition-colors custom-hover"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                      View Repository
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  </Magnetic>
-                </div>
-              )}
-            </motion.div>
-          ))}
+            <div className="w-12 h-12 rounded-full border border-brand-primary/30 bg-brand-primary/10 flex items-center justify-center text-brand-primary flex-shrink-0">
+              <BookOpen className="w-5 h-5" />
+            </div>
+          </div>
         </motion.div>
 
       </div>
     </section>
   );
 }
+
