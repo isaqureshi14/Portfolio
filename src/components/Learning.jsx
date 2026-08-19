@@ -11,6 +11,27 @@ import stickerSustainability from '../assets/stickers/ai_sustainability.jpg';
 export default function Learning() {
   const coursesList = [
     {
+      title: 'Deloitte Australia — Data Analytics Job Simulation',
+      issuer: 'Deloitte',
+      date: 'Aug 2026',
+      credentialId: '6a7ee9e4aa694bdf8949a4d7',
+      sticker: null,
+    },
+    {
+      title: 'Forage Academy — Solutions Architecture Job Simulation',
+      issuer: 'Forage',
+      date: 'Aug 2026',
+      credentialId: '6a7ee2c3aa694bdf89481d55',
+      sticker: null,
+    },
+    {
+      title: 'Deloitte Australia — Cyber Job Simulation',
+      issuer: 'Deloitte',
+      date: 'Aug 2026',
+      credentialId: '6a7edf2e6dfcb5ce71a9c3f4',
+      sticker: null,
+    },
+    {
       title: 'AI for Sustainability Virtual Internship',
       issuer: 'IBM (1M1B)',
       date: 'Jul 2026',
@@ -99,7 +120,7 @@ export default function Learning() {
           </h2>
 
           <p className="text-text-body text-xs sm:text-sm leading-relaxed mb-8 font-light">
-            Supporting coursework and technical certifications completed through IBM and Google programs.
+            Industry job simulations, technical certifications, and coursework completed through Deloitte, Forage, IBM, and Google programs.
           </p>
 
           {/* Direct Visible Compact Grid */}

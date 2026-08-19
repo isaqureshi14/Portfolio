@@ -40,12 +40,12 @@ export default function AboutStrip() {
       skills: ['React.js', 'Node.js', 'Express', 'Flask', 'HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
     },
     {
-      category: 'Databases & Tools',
-      skills: ['SQLite', 'SQL', 'Git/GitHub', 'Render', 'Turso', 'Chart.js'],
+      category: 'Databases & Cloud',
+      skills: ['SQLite', 'SQL', 'SQLAlchemy', 'Turso', 'Git/GitHub', 'Render', 'Chart.js', 'Vite'],
     },
     {
-      category: 'AI / Applied Interests',
-      skills: ['Anthropic API integration', 'Linear regression forecasting', 'Sentiment analysis pipelines'],
+      category: 'AI & Applied Interests',
+      skills: ['Anthropic Claude API', 'Linear regression forecasting', 'Sentiment analysis pipelines'],
     },
   ];
 

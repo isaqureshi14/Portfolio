@@ -287,7 +287,7 @@ export default function Hero() {
                     My projects range from full-stack platforms like FinWise (personal finance tracker with Anthropic API integration) and Sunrise Public School management redesign, to forecasting tools like the Energy Demand & Price Predictor presented at DBIT's InnoQuest 2025–26 exhibition.
                   </p>
                   <p className="text-text-body text-base leading-relaxed font-light">
-                    Alongside my coursework in mathematics, environmental studies, and core CS, I actively experiment with AI integrations, continuous learning through IBM and Google programs, and contributing to DBIT's newsletter team.
+                    Alongside my core engineering coursework, I actively complement my development skills with industry job simulations in data analytics, cybersecurity, and solutions architecture (Deloitte, Forage) and AI programs (IBM, Google), while contributing to DBIT's college newsletter team.
                   </p>
                 </div>
               </div>

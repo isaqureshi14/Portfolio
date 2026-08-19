@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Users, Calendar, Bookmark, Compass, BookOpen } from 'lucide-react';
 import Magnetic from './Magnetic';
-import financeImg from '../assets/finance_preview.png';
 
 const GithubIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -17,53 +16,48 @@ export default function Portfolio() {
       year: '2025',
       team: 'TEAM PROJECT',
       tags: ['REACT.JS', 'DJANGO', 'CHART.JS', 'LINEAR REGRESSION'],
-      description: "'Built a forecasting dashboard to predict energy demand and price trends using linear regression and Chart.js.",
+      description: 'Built a forecasting dashboard to predict energy demand and price trends using linear regression and Chart.js.',
       highlight: 'Presented at InnoQuest 2025–26 at DBIT.',
       github: null,
-      image: null,
     },
     {
       title: 'Sunrise Public School — Management System Redesign',
       year: '2026',
       team: null,
-      tags: ['NODE.JS', 'EXPRESS', 'SQLITE', 'TAILWIND CSS'],
-      description: 'Redesigned a multi-page school management system with a cohesive dark UI using glassmorphism and a custom accent theme while preserving the existing JavaScript logic.',
-      highlight: 'Deployed the application to Render using Turso for cloud-hosted SQLite.',
+      tags: ['NODE.JS', 'EXPRESS', 'SQLITE', 'TURSO', 'TAILWIND CSS'],
+      description: 'Co-developed a multi-portal school management platform with dedicated Owner, Teacher, Student, and Parent portals.',
+      highlight: 'Implemented role-based access with bcrypt credentials, daily attendance logging, gradebook uploads, and deployed to Render using Turso for cloud SQLite.',
       github: 'https://github.com/isaqureshi14/Student-management-system',
-      image: null,
     },
     {
       title: 'TREND-PULSE: AI Sentiment & Insight Bot',
       year: '2025',
       team: 'TEAM PROJECT — SYNTAX SQUAD',
-      tags: [],
+      tags: ['AI / ML', 'SENTIMENT ANALYSIS'],
       description: 'Contributed to an AI-driven sentiment analysis and insight tool.',
       highlight: null,
       github: null,
-      image: null,
     },
   ];
 
   const rightProjects = [
     {
       title: 'FinWise — Personal Finance App',
-      year: '2026 – Present',
+      year: '2026',
       team: null,
-      tags: ['FLASK', 'SQLITE', 'ANTHROPIC API', 'HTML/CSS/JS'],
-      description: 'Developing a full-stack personal finance tracker with an AI-assisted insights layer using the Anthropic API.',
-      highlight: 'Handled end-to-end deployment, including backend API key configuration and environment setup.',
+      tags: ['FLASK', 'SQLALCHEMY', 'SQLITE', 'TAILWIND CSS', 'CHART.JS', 'ANTHROPIC API'],
+      description: 'Co-developed a full-stack finance tracker with budgeting, transaction analytics, and AI-generated financial insights.',
+      highlight: 'Built an age-aware AI insights engine using the Anthropic Claude API, plus 12-month trend reports visualized with Chart.js.',
       github: 'https://github.com/isaqureshi14/Finance-Manager-With-AI-Insight',
-      image: financeImg,
     },
     {
       title: 'AI-Enhanced Notes App',
       year: '2026',
       team: null,
-      tags: ['FULL-STACK', 'AI INTEGRATION'],
-      description: 'Built a notes application with AI-assisted features for organizing and summarizing content.',
-      highlight: null,
+      tags: ['REACT', 'TYPESCRIPT', 'VITE', 'TAILWIND CSS', 'AI INTEGRATION'],
+      description: 'Co-developed a minimalist, offline-first workspace combining rich-text notes, a spreadsheet module, and progress tracking with an integrated AI copilot.',
+      highlight: 'Built a local spreadsheet module with formula evaluation (SUM, AVERAGE) and SHA-256 local authentication with AI prompt-injection filtering.',
       github: 'https://github.com/isaqureshi14/strata-agentic-notes',
-      image: null,
     },
   ];
 
@@ -124,18 +118,6 @@ export default function Portfolio() {
                 {tag}
               </span>
             ))}
-          </div>
-        )}
-
-        {/* Image preview (FinWise) */}
-        {proj.image && (
-          <div className="w-full bg-[#0a0d14] p-2.5 rounded-xl border border-text-body/10 my-3 overflow-hidden shadow-inner">
-            <img
-              src={proj.image}
-              alt={`${proj.title} Preview`}
-              className="w-full h-auto rounded-lg object-cover transition-transform duration-500 group-hover:scale-[1.01]"
-              loading="lazy"
-            />
           </div>
         )}
 
@@ -246,4 +228,5 @@ export default function Portfolio() {
     </section>
   );
 }
+
 
